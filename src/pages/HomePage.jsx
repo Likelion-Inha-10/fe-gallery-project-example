@@ -25,7 +25,7 @@ const HomePage = () => {
           <GridImage
             key={image.id}
             imageId={image.id}
-            image={image.image}
+            imageUrl={image.imageUrl}
             title={image.title}
             description={image.description}
           />

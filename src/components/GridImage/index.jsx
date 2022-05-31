@@ -9,7 +9,7 @@ const Image = styled.div`
   margin-bottom: 10px;
   width: 100%;
   height: 100%;
-  background-image: url(${(props) => props.image});
+  background-image: url(${(props) => props.imageUrl});
   background-position: center;
   background-size: cover;
 `;
@@ -30,11 +30,11 @@ const Description = styled.p`
   color: #adb5bd;
 `;
 
-const GridImage = ({ imageId, image, title, description }) => {
+const GridImage = ({ imageId, imageUrl, title, description }) => {
   return (
     <Wrapper>
       <Link to={`/${imageId}`}>
-        <Image image={image} />
+        <Image imageUrl={imageUrl} />
       </Link>
       <TextWrapper>
         <Title>{title}</Title>

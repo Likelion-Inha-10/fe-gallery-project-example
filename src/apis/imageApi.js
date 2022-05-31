@@ -1,14 +1,11 @@
-import axios from "axios";
-
-const BASE_URL =
-  "http://ec2-3-38-252-60.ap-northeast-2.compute.amazonaws.com:8080";
+import request from "./request";
 
 export const getAllImages = async () => {
-  const response = await axios.get(`${BASE_URL}/images`);
+  const response = await request.get("/images");
   return response.data;
 };
 
 export const getImageById = async (id) => {
-  const response = await axios.get(`${BASE_URL}/images/${id}`);
+  const response = await request.get(`/images/${id}`);
   return response.data;
 };
