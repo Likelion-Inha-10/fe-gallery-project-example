@@ -25,11 +25,11 @@ const DeleteButton = styled.button`
   cursor: pointer;
 `;
 
-const Comment = ({ author, content, onDelete }) => {
+const Comment = ({ author, body, onDelete }) => {
   return (
     <Wrapper>
       <Author> {author} </Author>
-      <Content> {content} </Content>
+      <Content> {body} </Content>
       <DeleteButton onClick={onDelete}>삭제</DeleteButton>
     </Wrapper>
   );

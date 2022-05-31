@@ -38,22 +38,22 @@ const ImagePage = () => {
   };
 
   // 댓글 작성 버튼을 클릭했을 때 호출되는 함수
-  const handleCommentButtonClick = () => {
-    commentApi.createComment(id, commentInput).then((createdComment) => {
-      const newComments = [...comments, createdComment];
-      setComments(newComments);
-      setCommentInput("");
+  const handleCommentButtonClick = async () => {
+    commentApi.createComment(id, commentInput).then(() => {
+      commentApi.getCommentsByImageId(id).then((comments) => {
+        setComments(comments);
+        setCommentInput("");
+      });
     });
   };
 
   // 댓글 삭제 버튼 클릭 시 호출되는 함수
   const handleDeleteClick = (commentId) => {
-    commentApi.deleteCommentById(commentId).then(() => {
-      const newComments = comments.filter(
-        (comment) => comment.id !== commentId
-      );
-
-      setComments(newComments);
+    commentApi.deleteCommentById(id, commentId).then(() => {
+      commentApi.getCommentsByImageId(id).then((comments) => {
+        setComments(comments);
+        setCommentInput("");
+      });
     });
   };
 
@@ -62,7 +62,7 @@ const ImagePage = () => {
   return (
     <>
       <DetailImage
-        image={image.image}
+        image={image.imageUrl}
         title={image.title}
         description={image.description}
       />
@@ -80,7 +80,7 @@ const ImagePage = () => {
           <Comment
             key={comment.id}
             author={comment.author}
-            content={comment.content}
+            body={comment.body}
             onDelete={() => handleDeleteClick(comment.id)}
           />
         ))}
