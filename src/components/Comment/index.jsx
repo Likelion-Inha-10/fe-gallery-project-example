@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import * as commentApi from "../../apis/commentApi";
-
 const Wrapper = styled.div`
   margin-bottom: 10px;
   display: flex;
