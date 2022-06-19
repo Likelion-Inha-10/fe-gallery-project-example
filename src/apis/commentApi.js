@@ -1,17 +1,16 @@
 import request from "./request";
 
 export const getCommentsByImageId = async (imageId) => {
-  const response = await request.get(`/images/${imageId}/comments`);
+  const response = await request.get(`/album/find/${imageId}`);
   return response.data;
 };
 
 export const deleteCommentById = async (imageId, id) => {
-  return await request.delete(`/images/${imageId}/comments/${id}`);
+  return await request.delete(`/album/delete/comment/${id}`);
 };
 
-export const createComment = async (imageId, body) => {
-  return request.post(`/images/${imageId}/comments`, {
-    author: "익명",
-    body,
+export const createComment = async (imageId, content) => {
+  return request.post(`/album/create/comment/${imageId}`, {
+    content,
   });
 };

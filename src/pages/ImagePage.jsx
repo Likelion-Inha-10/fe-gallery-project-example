@@ -62,9 +62,9 @@ const ImagePage = () => {
   return (
     <>
       <DetailImage
-        image={image.imageUrl}
+        image={image.img}
         title={image.title}
-        description={image.description}
+        description={image.content}
       />
       <CommentForm>
         <TextField
@@ -79,8 +79,8 @@ const ImagePage = () => {
         {comments.map((comment) => (
           <Comment
             key={comment.id}
-            author={comment.author}
-            body={comment.body}
+            author="익명"
+            body={comment.content}
             onDelete={() => handleDeleteClick(comment.id)}
           />
         ))}
